@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: '微软雅黑';
+    font-size: 14px;
+    overflow: hidden;
+}
+ul,li{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+p{
+    margin:0;
+}
+.el-tabs__item,
+.el-form-item__label
+{
+    color:rgba(255, 255, 255, 0.6) !important;
+}
+
+.el-radio__label{
+    color: #fff 
+}
+.el-input__inner{
+    color: #313234 !important;
+}
+@normal:#24fdec;
+@warn:#e3014d;
+@yellow:#ffdb69;
+@blue:#0c71d9;
+@purple:#739af9;
+@home_img_path: '../image/home/';
+@menu_img_path: '../image/menu/';
+@header_img_path:'../image/header/';
+@middle_img_path:'../image/middle/';
+@map_img_path:'../image/map/';
+
+@animteTime: 5s;
+
+.p_number {
+    font-size: 30px;
+    font-family: LcdD;
+    line-height: 40px;
+    // background: -webkit-linear-gradient(bottom, #78dff2, #739af9);
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    color: #78dff2;
+    display: block;
+    &.add {
+        &::after {
+            content: '+1';
+            color: @warn;
+            -webkit-text-fill-color: @warn;
+            font-size: 14px;
+            display: inline-block;
+            animation: scaleShow @animteTime infinite;
+            position: relative;
+            top: -4px;
+            left: 5px;
+        }
+    }
+    &.minus {
+        &::after {
+            content: '-1';
+            color: @yellow;
+            -webkit-text-fill-color: @yellow;
+            font-size: 14px;
+            display: inline-block;
+            animation: scaleShow @animteTime infinite;
+            position: relative;
+            top: -4px;
+            left: 5px;
+        }
+    }
+}
+.bottom{
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    left: 380px;
+    width: calc(~"100% - 840px");
+    height: 0;
+    z-index: 2;
+}
+.target {
+    position: relative;
+    width: 33px;
+    height: 33px;
+    border: 1px solid #ffffff;
+    float: left;
+    &::after {
+      content: "";
+      width: 12px;
+      height: 12px;      
+      display:inherit;
+      margin:10px;
+      background-color: #ffffff;        
+    }
+}

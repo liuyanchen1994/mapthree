@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- <title><%= htmlWebpackPlugin.options.title %></title> -->
+    <script src="<%= BASE_URL %>plugin/jquery-3.5.1.min.js"></script>
+    <script id="fragmentShader" type="x-shader/x-fragment">
+
+      precision lowp float;
+      precision lowp int;
+
+      uniform vec3 colorTop;
+      uniform float opacity;
+      uniform vec3 colorBottom;
+      varying float vRatio;
+
+      void main(void) {
+        float ratio = (vRatio - 0.5) * 1.2 + 0.5;
+        ratio = clamp(ratio, 0., 1.);
+        gl_FragColor = vec4(mix(colorBottom, colorTop, vRatio), opacity);
+      }
+  
+    </script>
+  
+    <script id="vertexShader" type="x-shader/x-vertex">
+  
+      precision lowp float;
+          precision lowp int;
+  
+          uniform float maxHeight;
+          varying float vRatio;
+          void main() {
+              vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+              vRatio = position.z / maxHeight;
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+  
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
